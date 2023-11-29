@@ -1,68 +1,82 @@
-﻿//Обчислення площі паралелограма
-Console.WriteLine("Площа паралелограма");
+using System.Text;
 
-Console.WriteLine("Довжина: ");
-double Par1 = Convert.ToDouble(Console.ReadLine());
+Console.OutputEncoding = UTF8Encoding.UTF8;
+Console.WriteLine(@"1 - Обчислення площі паралелограма
+2 - Обчислювання площі трикутника за формою герона
+3 - Обчислювання площі бічної поверхні піраміди
+4 - Обчислювання об'єму піраміди
+5 - Обчислювання об'єму сфери");
 
-Console.WriteLine("Висота: ");
-double Par2 = Convert.ToDouble(Console.ReadLine());
+Console.ForegroundColor = ConsoleColor.Blue;
+Console.WriteLine("Виберіть варіант...");
+Console.ResetColor();
+string variant = Console.ReadLine();
+switch (variant)
+{
+    case "1":
+        Console.WriteLine("Площа паралелограма");
 
-double solution1 = Par1 * Par2;
-Console.WriteLine($"Площа паралелограма = {solution1}");
+        Console.WriteLine("Довжина: ");
+        double lenght_par = Convert.ToDouble(Console.ReadLine());
 
+        Console.WriteLine("Висота: ");
+        double height_par = Convert.ToDouble(Console.ReadLine());
 
+        double solution1 = lenght_par * height_par;
+        Console.WriteLine($"Площа паралелограма = {solution1}");
+        break;
 
-//Обчислювання площі трикутника за формою герона
-Console.WriteLine("Площа трикутника за формою герона");
+    case "2":
+        Console.WriteLine("Площа трикутника за формою герона");
 
-Console.WriteLine("Довжина а: ");
-double Her1 = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Довжина а: ");
+        double lenght_a = Convert.ToDouble(Console.ReadLine());
 
-Console.WriteLine("Довжина b: ");
-double Her2 = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Довжина b: ");
+        double lenght_b = Convert.ToDouble(Console.ReadLine());
 
-Console.WriteLine("Довжина с: ");
-double Her3 = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Довжина с: ");
+        double lenght_c = Convert.ToDouble(Console.ReadLine());
 
-double p = (Her1 + Her2 + Her3) / 2;
-double solution2 = Math.Sqrt(p * (p - Her1) * (p - Her2) * (p - Her3));
+        double p = (lenght_a + lenght_b + lenght_c) / 2;
+        double solution2 = Math.Sqrt(p * (p - lenght_a) * (p - lenght_b) * (p - lenght_c));
 
-Console.WriteLine($"Площа трикутника за формою герона = {solution2}");
+        Console.WriteLine($"Площа трикутника за формою герона = {solution2}");
+        break;
 
+    case "3":
+        Console.WriteLine("Площа бічної поверхні піраміди");
 
+        Console.WriteLine("Довжина бічної грані: ");
+        double lenght_pir = Convert.ToDouble(Console.ReadLine());
 
-//Обчислювання площі бічної поверхні піраміди
-Console.WriteLine("Площа бічної поверхні піраміди");
+        Console.WriteLine("Висота піраміди: ");
+        double height_pir = Convert.ToDouble(Console.ReadLine());
 
-Console.WriteLine("Довжина бічної грані: ");
-double Pir1 = Convert.ToDouble(Console.ReadLine());
+        double solution3 = lenght_pir * Math.Sqrt(lenght_pir / 2) * (lenght_pir / 2) + height_pir * height_pir;
+        Console.WriteLine($"Площа бічної поверхні піраміди = {solution3}");
+        break;
 
-Console.WriteLine("Висота піраміди: ");
-double Pir2 = Convert.ToDouble(Console.ReadLine());
+    case "4":
+        Console.WriteLine("Об'єм піраміди");
 
-double solution3 = Pir1 * Math.Sqrt(Pir1 / 2) * (Pir1 / 2) + Pir2 * Pir2;
-Console.WriteLine($"Площа бічної поверхні піраміди = {solution3}");
+        Console.WriteLine("Площа основи піраміди: ");
+        double area = Convert.ToDouble(Console.ReadLine());
 
+        Console.WriteLine("Висота піраміди: ");
+        double height_amount = Convert.ToDouble(Console.ReadLine());
 
+        double solution4 = (1.0 / 3) * area * height_amount;
+        Console.WriteLine($"Об'єм піраміди = {solution4}");
 
-//Обчислювання об'єму піраміди
-Console.WriteLine("Об'єм піраміди");
+        break;
 
-Console.WriteLine("Площа основи піраміди: ");
-double Obpir1 = Convert.ToDouble(Console.ReadLine());
+    case "5":
+        Console.WriteLine("Об'єм Сфери");
 
-Console.WriteLine("Висота піраміди: ");
-double Obpir2 = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("Радіус сфери: ");
+        double sphere = Convert.ToDouble(Console.ReadLine());
 
-double solution4 = (1.0 / 3) * Obpir1 * Obpir2;
-Console.WriteLine($"Об'єм піраміди = {solution4}");
-
-
-
-//Обчислювання об'єму сфери
-Console.WriteLine("Об'єм Сфери");
-
-Console.WriteLine("Радіус сфери: ");
-double Sfer = Convert.ToDouble(Console.ReadLine());
-
-double solution5 = (4.0 / 3) * Math.PI * Math.Pow(Sfer, 3);
+        double solution5 = (4.0 / 3) * Math.PI * Math.Pow(sphere, 3);
+        break;
+}
